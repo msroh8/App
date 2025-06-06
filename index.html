@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>توثيق أعمال وكيلة المدرسة</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --main-bg: #f6f9fa;
+      --primary: #009688;
+      --secondary: #00597a;
+      --accent: #36c1ac;
+      --border: #e0e0e0;
+      --text: #222;
+      --header: #00897b;
+    }
+    body {
+      background: var(--main-bg);
+      font-family: 'Tajawal', Arial, sans-serif;
+      margin: 0; padding: 0;
+      color: var(--text);
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    header {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: #fff;
+      padding: 24px 10px 10px 10px;
+      text-align: right;
+      border-bottom: 3px solid var(--header);
+      border-radius: 0 0 22px 22px;
+    }
+    header img {
+      height: 38px;
+      vertical-align: middle;
+      margin-left: 12px;
+    }
+    h1 {
+      margin: 0 0 6px 0;
+      font-weight: bold;
+      font-size: 1.8em;
+    }
+    .container {
+      max-width: 900px;
+      margin: 32px auto 0 auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 6px 30px #0002;
+      padding: 32px 18px 24px 18px;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: block;
+    }
+    select, input, textarea {
+      width: 100%;
+      padding: 10px 8px;
+      margin: 8px 0 18px 0;
+      border: 1.2px solid var(--border);
+      border-radius: 8px;
+      background: #fafbfc;
+      font-size: 1em;
+    }
+    textarea { min-height: 72px; }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .row > * { flex: 1; min-width: 210px; }
+    button {
+      padding: 10px 26px;
+      border-radius: 9px;
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      font-weight: bold;
+      margin: 0 7px 0 0;
+      cursor: pointer;
+      transition: background .18s;
+      font-size: 1em;
+    }
+    button:hover { background: var(--secondary); }
+    .actions { margin-bottom: 18px; }
+    table {
+      width: 100%;
+      margin-top: 30px;
+      border-collapse: collapse;
+      background: #f7fbfc;
+      font-size: 1em;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 1px 8px #0001;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 9px 7px;
+      text-align: right;
+    }
+    th {
+      background: var(--primary);
+      color: #fff;
+      font-weight: bold;
+      font-size: 1em;
+    }
+    .stat-box {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+      gap: 10px;
+    }
+    .stat-item {
+      background: var(--accent);
+      color: #fff;
+      border-radius: 10px;
+      padding: 9px 18px;
+      font-weight: bold;
+      font-size: 1.04em;
+      margin-bottom: 4px;
+      min-width: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    @media (max-width:600px) {
+      .container { padding: 11px 3px 19px 3px; }
+      .stat-item, th, td { font-size: 0.97em; }
+      button { font-size: 0.97em; padding: 8px 12px;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://www.moe.gov.sa/_layouts/15/portal/images/moe-logo.png" alt="شعار وزارة التعليم">
+    <span>توثيق أعمال وكيلة المدرسة</span>
+    <div style="font-size:0.98em; color:#e0f2f1; margin-top:4px;">صفحة تفاعلية لتوثيق أعمال الوكيلة فايزة الشنبري</div>
+  </header>
+  <div class="container">
+    <form id="logForm" autocomplete="off">
+      <label for="eval">عنصر التقييم</label>
+      <select id="eval" required>
+        <option value="">اختر عنصر التقييم</option>
+        <option>أداء الواجبات الوظيفية</option>
+        <option>التفاعل مع المجتمع المهني</option>
+        <option>التفاعل مع أولياء الأمور</option>
+        <option>مرن وقادر على تنفيذ أعماله في ظل ظروف العمل المختلفة</option>
+        <option>يدعم ويشارك في المبادرات النوعية</option>
+        <option>يتخذ إجراءات تربوية تحقق الانضباط المدرسي</option>
+        <option>يدير الموارد في المدرسة بكفاءة</option>
+        <option>يشارك في إعداد خطة للتطوير المهني</option>
+        <option>يعد خطة للتطوير المهني</option>
+        <option>يقدم التغذية الراجعة ويتابع تحقق مؤشرات الأداء الوظيفي</option>
+        <option>يدعم تنفيذ برامج التطوير المهني</option>
+        <option>يقيم أداء منسوبي المدرسة</option>
+        <option>ينفذ إجراءات علمية لتحسين نتائج التعلم</option>
+        <option>يساهم في تحسين مستوى أداء المدرسة</option>
+        <option>يشارك في إعداد الخطط المدرسية اللازمة</option>
+        <option>يتابع تنفيذ الخطط المدرسية</option>
+        <option>يهيئ الفرص والإمكانات الداعمة لمشاركة الطلاب في الأنشطة الصفية وغير الصفية</option>
+        <option>يوظف المنصات الرقمية وتطبيقاتها المعتمدة في دعم عمليات التعليم والتعلم</option>
+        <option>يتابع تعزيز السلوك الإيجابي للطلاب</option>
+        <option>يهيئ بيئة مدرسية آمنة ومحفزة على التعلم</option>
+      </select>
+      <div class="row">
+        <div>
+          <label for="desc">وصف الممارسة</label>
+          <textarea id="desc" placeholder="اكتب وصفاً مختصراً للممارسة"></textarea>
+        </div>
+        <div>
+          <label for="photo">إرفاق صورة (اختياري)</label>
+          <input type="file" id="photo" accept="image/*">
+        </div>
+      </div>
+      <div class="actions">
+        <button type="submit">إضافة التوثيق</button>
+        <button type="button" id="exportWord">تصدير تقرير وورد</button>
+        <button type="button" id="resetAll" style="background:#e53935">تصفير المنجزات</button>
+      </div>
+    </form>
+    <div id="stats" class="stat-box"></div>
+    <table id="logTable" style="display:none;">
+      <thead>
+        <tr>
+          <th>عنصر التقييم</th>
+          <th>وصف الممارسة</th>
+          <th>الصورة</th>
+          <th>تاريخ الإضافة</th>
+          <th>حذف</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+<script>
+// =========== Data Logic ===========
+
+// تخزين رئيسي
+let logs = [];
+// تحميل البيانات عند بداية الصفحة
+window.onload = function() {
+  logs = JSON.parse(localStorage.getItem('logs') || '[]');
+  updateTable();
+  updateStats();
+};
+// حفظ التغييرات
+function saveLogs() {
+  localStorage.setItem('logs', JSON.stringify(logs));
+}
+// إعادة تعيين لكل شيء
+function resetAllData() {
+  if (!confirm('هل أنت متأكد أنك تريد تصفير جميع المنجزات؟ هذا الإجراء لا يمكن التراجع عنه.')) return;
+  logs = [];
+  saveLogs();
+  updateTable();
+  updateStats();
+}
+// إضافة توثيق جديد
+document.getElementById('logForm').onsubmit = async function(e) {
+  e.preventDefault();
+  const evalVal = document.getElementById('eval').value;
+  const descVal = document.getElementById('desc').value.trim();
+  const photoInput = document.getElementById('photo');
+  if (!evalVal || !descVal) return alert('يرجى اختيار عنصر التقييم وكتابة وصف الممارسة');
+  let imgBase64 = "";
+  if (photoInput.files && photoInput.files[0]) {
+    imgBase64 = await resizeAndConvert(photoInput.files[0]);
+  }
+  logs.push({
+    eval: evalVal,
+    desc: descVal,
+    img: imgBase64,
+    date: new Date().toLocaleString('ar-SA', { hour12: false })
+  });
+  saveLogs();
+  this.reset();
+  updateTable();
+  updateStats();
+};
+// تحديث جدول الإنجاز
+function updateTable() {
+  const table = document.getElementById('logTable');
+  const tbody = table.querySelector('tbody');
+  tbody.innerHTML = '';
+  if (logs.length == 0) { table.style.display = 'none'; return; }
+  table.style.display = '';
+  logs.forEach((item, i) => {
+    let row = tbody.insertRow();
+    row.insertCell().textContent = item.eval;
+    row.insertCell().textContent = item.desc;
+    let imgTd = row.insertCell();
+    if(item.img)
+      imgTd.innerHTML = `<img src="${item.img}" style="max-width:70px;max-height:60px;border-radius:8px;">`;
+    else imgTd.textContent = 'بدون';
+    row.insertCell().textContent = item.date;
+    let del = document.createElement('button');
+    del.textContent = 'حذف';
+    del.style.background = '#e53935';
+    del.onclick = function() {
+      if(confirm('هل تريد حذف هذا التوثيق؟')) {
+        logs.splice(i,1); saveLogs(); updateTable(); updateStats();
+      }
+    };
+    let delTd = row.insertCell();
+    delTd.appendChild(del);
+  });
+}
+// تحديث الإحصائيات
+function updateStats() {
+  const statBox = document.getElementById('stats');
+  if(logs.length == 0) { statBox.innerHTML = ''; return;}
+  // عدّ التوثيقات حسب العنصر
+  let stat = {};
+  logs.forEach(x => stat[x.eval] = (stat[x.eval]||0)+1);
+  statBox.innerHTML = '';
+  Object.keys(stat).forEach(k => {
+    let s = document.createElement('div');
+    s.className = 'stat-item';
+    s.innerHTML = `<span>${k}</span> <span>${stat[k]} توثيقات</span>`;
+    statBox.appendChild(s);
+  });
+}
+
+// إعادة تحجيم الصورة
+function resizeAndConvert(file) {
+  return new Promise(resolve => {
+    let reader = new FileReader();
+    reader.onload = function(event) {
+      let img = new Image();
+      img.onload = function() {
+        let canvas = document.createElement('canvas');
+        let scale = 300 / img.width;
+        canvas.width = 300;
+        canvas.height = img.height * scale;
+        let ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        resolve(canvas.toDataURL('image/jpeg', 0.8));
+      }
+      img.src = event.target.result;
+    }
+    reader.readAsDataURL(file);
+  });
+}
+
+// تصدير تقرير وورد (كود مبسط)
+document.getElementById('exportWord').onclick = function() {
+  if(logs.length == 0) return alert('لا توجد توثيقات لتصديرها');
+  let html = `<html dir="rtl"><head><meta charset="utf-8"></head><body style="font-family:'Tajawal',Arial;">
+  <h2 style="color:#00897b;">تقرير توثيق أعمال وكيلة المدرسة</h2>
+  <table border="1" style="border-collapse:collapse;width:100%;font-size:1em;">
+    <tr><th>عنصر التقييم</th><th>وصف الممارسة</th><th>تاريخ الإضافة</th></tr>`;
+  logs.forEach(x => {
+    html += `<tr>
+      <td>${x.eval}</td>
+      <td>${x.desc}</td>
+      <td>${x.date}</td>
+    </tr>`;
+  });
+  html += `</table>`;
+  // الصور في آخر التقرير
+  html += `<h3>المرفقات المصورة:</h3>`;
+  logs.forEach((x,i) => {
+    if(x.img)
+      html += `<div><b>${i+1}- ${x.eval}:</b><br><img src="${x.img}" style="max-width:340px;margin:12px 0;"></div>`;
+  });
+  html += '</body></html>';
+  let blob = new Blob([html], {type:'application/msword'});
+  let a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'تقرير_توثيق_الأعمال.doc';
+  a.click();
+};
+// تصفير كل البيانات
+document.getElementById('resetAll').onclick = resetAllData;
+</script>
+</body>
+</html>

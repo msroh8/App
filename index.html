@@ -3,241 +3,575 @@
 <head>
   <meta charset="UTF-8">
   <title>توثيق أعمال وكيلة المدرسة</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=420, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <style>
     :root {
-      --main-bg: #f6f9fa;
+      --main-bg: #f4fafc;
       --primary: #009688;
-      --secondary: #00597a;
-      --accent: #36c1ac;
-      --border: #e0e0e0;
-      --text: #222;
-      --header: #00897b;
+      --primary-dark: #00796b;
+      --accent: #4dd0e1;
+      --warn-bg: #fffde7;
+      --warn-border: #ffe082;
+      --warn-text: #b28704;
+      --card-bg: #fff;
+      --card-shadow: 0 2px 18px #0001;
+      --radius: 18px;
+      --green: #18bb64;
+      --yellow: #fec60a;
+      --blue: #2196f3;
+      --red: #f54c3f;
+      --gray: #e0e0e0;
     }
     body {
+      margin: 0; padding: 0;
       background: var(--main-bg);
       font-family: 'Tajawal', Arial, sans-serif;
-      margin: 0; padding: 0;
-      color: var(--text);
+      color: #1b2328;
       min-height: 100vh;
-      box-sizing: border-box;
     }
     header {
-      background: linear-gradient(90deg, var(--primary), var(--accent));
+      background: linear-gradient(90deg, var(--primary-dark), var(--primary));
       color: #fff;
-      padding: 24px 10px 10px 10px;
+      border-bottom: 3px solid var(--primary);
+      border-radius: 0 0 20px 20px;
+      padding: 22px 0 18px 0;
+      box-shadow: var(--card-shadow);
       text-align: right;
-      border-bottom: 3px solid var(--header);
-      border-radius: 0 0 22px 22px;
     }
-    header img {
-      height: 38px;
-      vertical-align: middle;
-      margin-left: 12px;
+    header .head-content {
+      max-width: 410px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
     }
-    h1 {
-      margin: 0 0 6px 0;
-      font-weight: bold;
-      font-size: 1.8em;
-    }
-    .container {
-      max-width: 900px;
-      margin: 32px auto 0 auto;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 6px 30px #0002;
-      padding: 32px 18px 24px 18px;
-    }
-    label {
-      font-weight: 600;
-      margin-bottom: 8px;
+    .moe-logo {
+      height: 44px; margin-bottom: 7px; margin-left: 8px;
       display: block;
     }
-    select, input, textarea {
-      width: 100%;
-      padding: 10px 8px;
-      margin: 8px 0 18px 0;
-      border: 1.2px solid var(--border);
-      border-radius: 8px;
-      background: #fafbfc;
-      font-size: 1em;
+    header .title {
+      font-size: 1.65em;
+      font-weight: bold;
+      margin-bottom: 3px;
     }
-    textarea { min-height: 72px; }
-    .row {
+    header .desc {
+      font-size: 1.1em;
+      color: #e0f2f1;
+    }
+    .container {
+      background: var(--card-bg);
+      margin: 32px auto 0 auto;
+      max-width: 420px;
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 22px 10px 16px 10px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
     }
-    .row > * { flex: 1; min-width: 210px; }
-    button {
-      padding: 10px 26px;
-      border-radius: 9px;
+    .icon-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 0 0 16px 0;
+    }
+    .icon-round {
+      width: 41px; height: 41px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: none;
+      outline: none;
+      background: var(--gray);
+      color: #fff;
+      font-size: 1.25em;
+      transition: transform .14s, box-shadow .22s;
+      box-shadow: 0 1px 6px #0002;
+      position: relative;
+      cursor: pointer;
+    }
+    .icon-round svg {
+      width: 23px;
+      height: 23px;
+      pointer-events: none;
+    }
+    .icon-round.green   { background: var(--green);}
+    .icon-round.yellow  { background: var(--yellow);}
+    .icon-round.blue    { background: var(--blue);}
+    .icon-round.red     { background: var(--red);}
+    .icon-round.accent  { background: var(--accent);}
+    .icon-round:hover, .icon-round:focus {
+      transform: scale(1.09);
+      box-shadow: 0 2px 16px #00968833;
+      z-index: 2;
+    }
+    .icon-round:active { transform: scale(0.98);}
+    .icon-round .tip {
+      position: absolute;
+      right: 50%; top: -37px;
+      transform: translateX(50%);
+      background: #222d;
+      color: #fff;
+      padding: 3.5px 12px;
+      font-size: 0.95em;
+      border-radius: 8px;
+      opacity: 0; pointer-events: none;
+      white-space: nowrap;
+      transition: opacity .16s;
+      z-index: 4;
+    }
+    .icon-round:focus .tip,
+    .icon-round:hover .tip {
+      opacity: 1;
+    }
+    .pie-progress-container {
+      margin: 8px auto 14px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .pie-label {
+      text-align: center;
+      margin-top: 7px;
+      font-size: 1.12em;
+      font-weight: bold;
+      color: var(--primary);
+    }
+    .accordion {
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      margin-bottom: 13px;
+      background: #fcfeff;
+      box-shadow: 0 1px 8px #0000;
+      overflow: hidden;
+      transition: box-shadow .23s;
+    }
+    .accordion.active {
+      box-shadow: 0 2px 16px #00968818;
+      border-color: var(--primary);
+    }
+    .accordion-title {
+      cursor: pointer;
+      padding: 15px 16px 13px 5px;
+      background: #f7f9fa;
+      font-weight: bold;
+      font-size: 1.13em;
+      color: var(--primary-dark);
+      border: none;
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background .23s;
+    }
+    .accordion-title .arrow {
+      transition: transform .22s cubic-bezier(.8,.1,.7,1.5);
+      font-size: 1.2em;
+    }
+    .accordion.active .accordion-title {
+      background: #e0f7fa;
+    }
+    .accordion.active .arrow {
+      transform: rotate(90deg);
+    }
+    .accordion-content {
+      padding: 13px 10px 10px 10px;
+      display: none;
+      animation: fadeIn .4s;
+    }
+    .accordion.active .accordion-content { display: block;}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px);}
+      to { opacity: 1; transform: none;}
+    }
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+      color: #00796b;
+      margin-top: 9px;
+    }
+    select, textarea, input[type="file"] {
+      width: 100%;
+      margin: 0 0 12px 0;
+      padding: 9px 8px;
+      font-size: 1em;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      background: #f8fafb;
+      transition: border .22s;
+      box-sizing: border-box;
+    }
+    textarea { min-height: 66px; }
+    .actions {
+      display: flex;
+      flex-direction: row;
+      gap: 6px;
+      margin: 10px 0 12px 0;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+    .main-btn {
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+      font-size: 1.03em;
+      cursor: pointer;
+      transition: background .18s, color .16s;
+      outline: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 9px 17px;
       background: var(--primary);
       color: #fff;
-      font-weight: bold;
-      margin: 0 7px 0 0;
-      cursor: pointer;
-      transition: background .18s;
-      font-size: 1em;
     }
-    button:hover { background: var(--secondary); }
-    .actions { margin-bottom: 18px; }
+    .main-btn:hover { background: var(--primary-dark);}
+    .danger { background: #e53935 !important; }
+    .danger:hover { background: #b71c1c !important;}
+    .img-previews { display: flex; gap: 7px; margin-bottom: 12px; }
+    .img-previews img {
+      border-radius: 8px;
+      max-width: 54px;
+      max-height: 48px;
+      box-shadow: 0 1px 4px #0001;
+      border: 1px solid #e0e0e0;
+      background: #fff;
+      object-fit: contain;
+    }
     table {
       width: 100%;
-      margin-top: 30px;
       border-collapse: collapse;
-      background: #f7fbfc;
-      font-size: 1em;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 1px 8px #0001;
+      background: #fff;
+      border-radius: 13px;
+      box-shadow: 0 1px 5px #0001;
+      margin-top: 17px;
+      font-size: 0.98em;
+      margin-bottom: 10px;
     }
     th, td {
-      border: 1px solid var(--border);
-      padding: 9px 7px;
+      border: 1px solid #eee;
+      padding: 7px 5px;
       text-align: right;
+      vertical-align: top;
     }
     th {
       background: var(--primary);
       color: #fff;
       font-weight: bold;
-      font-size: 1em;
     }
-    .stat-box {
-      display: flex;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
-      gap: 10px;
-    }
-    .stat-item {
-      background: var(--accent);
+    .del-btn {
+      background: #e53935;
       color: #fff;
-      border-radius: 10px;
-      padding: 9px 18px;
-      font-weight: bold;
-      font-size: 1.04em;
-      margin-bottom: 4px;
-      min-width: 170px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      border: none;
+      border-radius: 7px;
+      padding: 6px 0;
+      width: 100%;
+      cursor: pointer;
+      font-size: 0.95em;
     }
-    @media (max-width:600px) {
-      .container { padding: 11px 3px 19px 3px; }
-      .stat-item, th, td { font-size: 0.97em; }
-      button { font-size: 0.97em; padding: 8px 12px;}
+    .del-btn:hover { background: #b71c1c; }
+    .needed-block {
+      background: var(--warn-bg);
+      border: 1.5px solid var(--warn-border);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 18px 14px 12px 14px;
+      margin: 0 auto 15px auto;
+      max-width: 420px;
+    }
+    .needed-block h3 {
+      color: var(--warn-text);
+      margin: 0 0 12px 0;
+      font-size: 1.1em;
+      font-weight: bold;
+      text-align: right;
+    }
+    .needed-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fffde7;
+      font-size: 0.97em;
+    }
+    .needed-table th, .needed-table td {
+      border: 1px solid #ffe082;
+      padding: 7px 4px;
+      text-align: right;
+    }
+    .needed-table th {
+      background: #ffe082;
+      color: #7c6f12;
+    }
+    .needed-table td {
+      color: #b28704;
+      font-weight: 500;
+    }
+    @media (max-width:520px) {
+      .container, .needed-block, header .head-content { max-width: 99vw; }
+      .main-btn { font-size: 0.97em; padding: 8px 7px;}
+      table, .needed-table { font-size: 0.95em;}
+      .pie-label { font-size: 1em;}
+      .icon-row { gap:10px;}
+      .icon-round { width:34px; height:34px;}
+      .icon-round svg { width:18px; height:18px;}
+      .icon-round .tip { font-size: 0.87em;}
+      .moe-logo { height:33px; }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://www.moe.gov.sa/_layouts/15/portal/images/moe-logo.png" alt="شعار وزارة التعليم">
-    <span>توثيق أعمال وكيلة المدرسة</span>
-    <div style="font-size:0.98em; color:#e0f2f1; margin-top:4px;">صفحة تفاعلية لتوثيق أعمال الوكيلة فايزة الشنبري</div>
+    <div class="head-content">
+      <!-- شعار الوزارة SVG -->
+      <svg class="moe-logo" viewBox="0 0 400 139" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <circle cx="44.85" cy="17.44" r="17.44" fill="#0db1a0"/>
+          <circle cx="83.66" cy="25.38" r="15.34" fill="#19b9ae"/>
+          <circle cx="122.47" cy="23.61" r="14.25" fill="#23bdb7"/>
+          <circle cx="161.28" cy="14.63" r="14.63" fill="#19b9ae"/>
+          <circle cx="200.09" cy="28.71" r="13.52" fill="#0db1a0"/>
+          <circle cx="238.9" cy="25.38" r="12.38" fill="#0db1a0"/>
+          <circle cx="277.71" cy="17.44" r="11.78" fill="#19b9ae"/>
+          <circle cx="56.6" cy="59.33" r="14.25" fill="#76cdc6"/>
+          <circle cx="93.15" cy="46.15" r="12.53" fill="#19b9ae"/>
+          <circle cx="128.25" cy="41.25" r="12.04" fill="#76cdc6"/>
+          <circle cx="163.2" cy="34.54" r="11.38" fill="#0db1a0"/>
+          <circle cx="198.12" cy="41.25" r="10.97" fill="#19b9ae"/>
+          <circle cx="233.27" cy="46.15" r="10.21" fill="#0db1a0"/>
+          <circle cx="267.44" cy="59.33" r="9.92" fill="#19b9ae"/>
+          <circle cx="66.84" cy="91.49" r="12.18" fill="#76cdc6"/>
+          <circle cx="98.53" cy="70.56" r="9.48" fill="#76cdc6"/>
+          <circle cx="130.74" cy="64.74" r="9.09" fill="#76cdc6"/>
+          <circle cx="163.2" cy="55.31" r="8.42" fill="#19b9ae"/>
+          <circle cx="195.78" cy="64.74" r="7.79" fill="#76cdc6"/>
+          <circle cx="228.32" cy="70.56" r="7.09" fill="#76cdc6"/>
+          <circle cx="259.85" cy="91.49" r="7.33" fill="#19b9ae"/>
+          <circle cx="80.5" cy="110.81" r="9.47" fill="#76cdc6"/>
+          <circle cx="108.04" cy="90.24" r="6.95" fill="#76cdc6"/>
+          <circle cx="135.9" cy="86.17" r="6.68" fill="#76cdc6"/>
+          <circle cx="164.33" cy="80.49" r="5.93" fill="#76cdc6"/>
+          <circle cx="192.9" cy="86.17" r="5.29" fill="#76cdc6"/>
+          <circle cx="221.19" cy="90.24" r="4.8" fill="#76cdc6"/>
+          <circle cx="249.61" cy="110.81" r="5.42" fill="#19b9ae"/>
+          <circle cx="381.71" cy="38.2" r="17.35" fill="#23bdb7"/>
+          <circle cx="359.2" cy="55.39" r="13.72" fill="#23bdb7"/>
+          <circle cx="334.24" cy="70.18" r="11.57" fill="#19b9ae"/>
+          <circle cx="312.85" cy="91.47" r="10.11" fill="#19b9ae"/>
+          <circle cx="330.07" cy="17.44" r="17.44" fill="#0db1a0"/>
+          <circle cx="305.98" cy="25.38" r="15.34" fill="#19b9ae"/>
+          <circle cx="285.34" cy="41.25" r="12.04" fill="#76cdc6"/>
+          <circle cx="277.71" cy="59.33" r="9.92" fill="#19b9ae"/>
+          <circle cx="312.85" cy="91.47" r="10.11" fill="#19b9ae"/>
+          <circle cx="334.24" cy="70.18" r="11.57" fill="#19b9ae"/>
+        </g>
+      </svg>
+      <div class="title">توثيق أعمال وكيلة المدرسة</div>
+      <div class="desc">صفحة تفاعلية لتوثيق أعمال الوكيلة فايزة الشنبري</div>
+    </div>
   </header>
   <div class="container">
-    <form id="logForm" autocomplete="off">
-      <label for="eval">عنصر التقييم</label>
-      <select id="eval" required>
-        <option value="">اختر عنصر التقييم</option>
-        <option>أداء الواجبات الوظيفية</option>
-        <option>التفاعل مع المجتمع المهني</option>
-        <option>التفاعل مع أولياء الأمور</option>
-        <option>مرن وقادر على تنفيذ أعماله في ظل ظروف العمل المختلفة</option>
-        <option>يدعم ويشارك في المبادرات النوعية</option>
-        <option>يتخذ إجراءات تربوية تحقق الانضباط المدرسي</option>
-        <option>يدير الموارد في المدرسة بكفاءة</option>
-        <option>يشارك في إعداد خطة للتطوير المهني</option>
-        <option>يعد خطة للتطوير المهني</option>
-        <option>يقدم التغذية الراجعة ويتابع تحقق مؤشرات الأداء الوظيفي</option>
-        <option>يدعم تنفيذ برامج التطوير المهني</option>
-        <option>يقيم أداء منسوبي المدرسة</option>
-        <option>ينفذ إجراءات علمية لتحسين نتائج التعلم</option>
-        <option>يساهم في تحسين مستوى أداء المدرسة</option>
-        <option>يشارك في إعداد الخطط المدرسية اللازمة</option>
-        <option>يتابع تنفيذ الخطط المدرسية</option>
-        <option>يهيئ الفرص والإمكانات الداعمة لمشاركة الطلاب في الأنشطة الصفية وغير الصفية</option>
-        <option>يوظف المنصات الرقمية وتطبيقاتها المعتمدة في دعم عمليات التعليم والتعلم</option>
-        <option>يتابع تعزيز السلوك الإيجابي للطلاب</option>
-        <option>يهيئ بيئة مدرسية آمنة ومحفزة على التعلم</option>
-      </select>
-      <div class="row">
-        <div>
-          <label for="desc">وصف الممارسة</label>
-          <textarea id="desc" placeholder="اكتب وصفاً مختصراً للممارسة"></textarea>
+    <!-- أزرار دائرية -->
+    <div class="icon-row">
+      <button id="exportWord" class="icon-round green" title="تصدير وورد" tabindex="0">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M17 9v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9m14 0V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2m14 0l-2.293-2.293a1 1 0 0 0-1.414 0L10 7.586 8.707 6.293a1 1 0 0 0-1.414 0L5 9"></path></svg>
+        <span class="tip">تصدير وورد</span>
+      </button>
+      <button id="exportPDF" class="icon-round blue" title="تصدير PDF" tabindex="0">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M8 2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8zm0 2h4v12H8V4z"></path></svg>
+        <span class="tip">تصدير PDF</span>
+      </button>
+      <button id="exportBackup" class="icon-round yellow" title="تصدير نسخة" tabindex="0">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 21a1 1 0 0 1-1-1V7.83l-3.59 3.58a1 1 0 0 1-1.42-1.42l5.3-5.29a1 1 0 0 1 1.42 0l5.29 5.3a1 1 0 1 1-1.42 1.42L13 7.83V20a1 1 0 0 1-1 1z"></path></svg>
+        <span class="tip">تصدير نسخة احتياطية</span>
+      </button>
+      <button id="importBackup" class="icon-round accent" title="استيراد نسخة" tabindex="0">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 3a9 9 0 1 0 8.485 5.814 1 1 0 0 0-1.85-.741A7 7 0 1 1 12 5a1 1 0 0 0 0-2z"></path></svg>
+        <span class="tip">استيراد نسخة احتياطية</span>
+      </button>
+      <button id="resetAll" class="icon-round red" title="تصفير المنجزات" tabindex="0">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm5 13H7a1 1 0 1 1 0-2h10a1 1 0 1 1 0 2z"></path></svg>
+        <span class="tip">تصفير المنجزات</span>
+      </button>
+    </div>
+    <div class="pie-progress-container">
+      <canvas id="pieProgress" width="120" height="120"></canvas>
+      <div class="pie-label" id="pieLabel"></div>
+    </div>
+    <!-- Accordion: إضافة ممارسة جديدة -->
+    <div class="accordion active" id="addAccordion">
+      <div class="accordion-title" onclick="toggleAccordion(this.parentElement)">
+        <span>➕ إضافة ممارسة جديدة</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="accordion-content">
+        <label for="eval">عنصر التقييم</label>
+        <select id="eval" required>
+          <option value="">اختر عنصر التقييم</option>
+          <option>أداء الواجبات الوظيفية</option>
+          <option>التفاعل مع المجتمع المهني</option>
+          <option>التفاعل مع أولياء الأمور</option>
+          <option>مرن وقادر على تنفيذ أعماله في ظل ظروف العمل المختلفة</option>
+          <option>يدعم ويشارك في المبادرات النوعية</option>
+          <option>يتخذ إجراءات تربوية تحقق الانضباط المدرسي</option>
+          <option>يدير الموارد في المدرسة بكفاءة</option>
+          <option>يشارك في إعداد خطة للتطوير المهني</option>
+          <option>يعد خطة للتطوير المهني</option>
+          <option>يقدم التغذية الراجعة ويتابع تحقق مؤشرات الأداء الوظيفي</option>
+          <option>يدعم تنفيذ برامج التطوير المهني</option>
+          <option>يقيم أداء منسوبي المدرسة</option>
+          <option>ينفذ إجراءات علمية لتحسين نتائج التعلم</option>
+          <option>يساهم في تحسين مستوى أداء المدرسة</option>
+          <option>يشارك في إعداد الخطط المدرسية اللازمة</option>
+          <option>يتابع تنفيذ الخطط المدرسية</option>
+          <option>يهيئ الفرص والإمكانات الداعمة لمشاركة الطلاب في الأنشطة الصفية وغير الصفية</option>
+          <option>يوظف المنصات الرقمية وتطبيقاتها المعتمدة في دعم عمليات التعليم والتعلم</option>
+          <option>يتابع تعزيز السلوك الإيجابي للطلاب</option>
+          <option>يهيئ بيئة مدرسية آمنة ومحفزة على التعلم</option>
+        </select>
+        <label for="desc">وصف الممارسة</label>
+        <textarea id="desc" placeholder="اكتب وصفاً مختصراً للممارسة"></textarea>
+        <label>إرفاق حتى 4 صور (الأخيرة مباشرة من الكاميرا للجوال):</label>
+        <div style="display:flex;gap:7px;">
+          <input type="file" id="photo1" accept="image/*">
+          <input type="file" id="photo2" accept="image/*">
+          <input type="file" id="photo3" accept="image/*">
+          <input type="file" id="photo4" accept="image/*" capture="environment">
         </div>
-        <div>
-          <label for="photo">إرفاق صورة (اختياري)</label>
-          <input type="file" id="photo" accept="image/*">
+        <div class="img-previews" id="imgPreviews"></div>
+        <div class="actions" style="margin:10px 0 0 0;">
+          <button id="addLog" class="main-btn">إضافة التوثيق</button>
         </div>
       </div>
-      <div class="actions">
-        <button type="submit">إضافة التوثيق</button>
-        <button type="button" id="exportWord">تصدير تقرير وورد</button>
-        <button type="button" id="resetAll" style="background:#e53935">تصفير المنجزات</button>
+    </div>
+    <!-- Accordion: السجل الكامل -->
+    <div class="accordion" id="logsAccordion">
+      <div class="accordion-title" onclick="toggleAccordion(this.parentElement)">
+        <span>📋 السجل الكامل للتوثيقات</span>
+        <span class="arrow">▶</span>
       </div>
-    </form>
-    <div id="stats" class="stat-box"></div>
-    <table id="logTable" style="display:none;">
-      <thead>
-        <tr>
-          <th>عنصر التقييم</th>
-          <th>وصف الممارسة</th>
-          <th>الصورة</th>
-          <th>تاريخ الإضافة</th>
-          <th>حذف</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+      <div class="accordion-content">
+        <div id="stats" class="stat-box"></div>
+        <table id="logTable" style="display:none;">
+          <thead>
+            <tr>
+              <th>عنصر التقييم</th>
+              <th>وصف الممارسة</th>
+              <th>الصور</th>
+              <th>تاريخ الإضافة</th>
+              <th>حذف</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- بطاقة حالة توثيق العناصر -->
+    <div id="neededTable"></div>
   </div>
 <script>
-// =========== Data Logic ===========
-
-// تخزين رئيسي
+function toggleAccordion(acc) {
+  document.querySelectorAll('.accordion').forEach(a=>a.classList.remove('active'));
+  acc.classList.add('active');
+}
 let logs = [];
-// تحميل البيانات عند بداية الصفحة
+const allItems = [
+  "أداء الواجبات الوظيفية",
+  "التفاعل مع المجتمع المهني",
+  "التفاعل مع أولياء الأمور",
+  "مرن وقادر على تنفيذ أعماله في ظل ظروف العمل المختلفة",
+  "يدعم ويشارك في المبادرات النوعية",
+  "يتخذ إجراءات تربوية تحقق الانضباط المدرسي",
+  "يدير الموارد في المدرسة بكفاءة",
+  "يشارك في إعداد خطة للتطوير المهني",
+  "يعد خطة للتطوير المهني",
+  "يقدم التغذية الراجعة ويتابع تحقق مؤشرات الأداء الوظيفي",
+  "يدعم تنفيذ برامج التطوير المهني",
+  "يقيم أداء منسوبي المدرسة",
+  "ينفذ إجراءات علمية لتحسين نتائج التعلم",
+  "يساهم في تحسين مستوى أداء المدرسة",
+  "يشارك في إعداد الخطط المدرسية اللازمة",
+  "يتابع تنفيذ الخطط المدرسية",
+  "يهيئ الفرص والإمكانات الداعمة لمشاركة الطلاب في الأنشطة الصفية وغير الصفية",
+  "يوظف المنصات الرقمية وتطبيقاتها المعتمدة في دعم عمليات التعليم والتعلم",
+  "يتابع تعزيز السلوك الإيجابي للطلاب",
+  "يهيئ بيئة مدرسية آمنة ومحفزة على التعلم"
+];
+function saveLogs() {
+  localStorage.setItem('logs', JSON.stringify(logs));
+}
 window.onload = function() {
   logs = JSON.parse(localStorage.getItem('logs') || '[]');
   updateTable();
   updateStats();
+  updateNeededTable();
+  updatePieChart();
+  document.getElementById('addAccordion').classList.add('active');
 };
-// حفظ التغييرات
-function saveLogs() {
-  localStorage.setItem('logs', JSON.stringify(logs));
+const imgInputs = [
+  document.getElementById('photo1'),
+  document.getElementById('photo2'),
+  document.getElementById('photo3'),
+  document.getElementById('photo4')
+];
+imgInputs.forEach(inp => inp.onchange = ()=>previewImages());
+function previewImages(){
+  let cont = document.getElementById('imgPreviews');
+  cont.innerHTML = '';
+  imgInputs.forEach(inp=>{
+    if(inp.files&&inp.files[0]){
+      let reader = new FileReader();
+      reader.onload = e=>{
+        let img = document.createElement('img');
+        img.src = e.target.result;
+        cont.appendChild(img);
+      }
+      reader.readAsDataURL(inp.files[0]);
+    }
+  });
 }
-// إعادة تعيين لكل شيء
+function resetImageInputs() {
+  imgInputs.forEach(inp => { inp.value = ""; });
+  document.getElementById('imgPreviews').innerHTML = '';
+}
 function resetAllData() {
   if (!confirm('هل أنت متأكد أنك تريد تصفير جميع المنجزات؟ هذا الإجراء لا يمكن التراجع عنه.')) return;
   logs = [];
   saveLogs();
   updateTable();
   updateStats();
+  updateNeededTable();
+  updatePieChart();
 }
-// إضافة توثيق جديد
-document.getElementById('logForm').onsubmit = async function(e) {
-  e.preventDefault();
+document.getElementById('addLog').onclick = async function() {
   const evalVal = document.getElementById('eval').value;
   const descVal = document.getElementById('desc').value.trim();
-  const photoInput = document.getElementById('photo');
-  if (!evalVal || !descVal) return alert('يرجى اختيار عنصر التقييم وكتابة وصف الممارسة');
-  let imgBase64 = "";
-  if (photoInput.files && photoInput.files[0]) {
-    imgBase64 = await resizeAndConvert(photoInput.files[0]);
+  if (!evalVal || !descVal)
+    return alert('يرجى اختيار عنصر التقييم وكتابة وصف الممارسة');
+  let imgs = [];
+  for(let i=0;i<4;i++){
+    if(imgInputs[i].files && imgInputs[i].files[0]){
+      imgs.push(await resizeAndConvert(imgInputs[i].files[0]));
+    }
   }
   logs.push({
     eval: evalVal,
     desc: descVal,
-    img: imgBase64,
+    imgs: imgs,
     date: new Date().toLocaleString('ar-SA', { hour12: false })
   });
   saveLogs();
-  this.reset();
+  document.getElementById('eval').value = '';
+  document.getElementById('desc').value = '';
+  resetImageInputs();
   updateTable();
   updateStats();
+  updateNeededTable();
+  updatePieChart();
 };
-// تحديث جدول الإنجاز
 function updateTable() {
   const table = document.getElementById('logTable');
   const tbody = table.querySelector('tbody');
@@ -248,28 +582,26 @@ function updateTable() {
     let row = tbody.insertRow();
     row.insertCell().textContent = item.eval;
     row.insertCell().textContent = item.desc;
-    let imgTd = row.insertCell();
-    if(item.img)
-      imgTd.innerHTML = `<img src="${item.img}" style="max-width:70px;max-height:60px;border-radius:8px;">`;
-    else imgTd.textContent = 'بدون';
+    let imgsTd = row.insertCell();
+    if(item.imgs&&item.imgs.length>0){
+      imgsTd.innerHTML = item.imgs.map(url=>`<img src="${url}" style="max-width:45px;max-height:42px;border-radius:7px;margin-left:3px;">`).join('');
+    }else imgsTd.textContent = 'بدون';
     row.insertCell().textContent = item.date;
     let del = document.createElement('button');
     del.textContent = 'حذف';
-    del.style.background = '#e53935';
+    del.className = "del-btn";
     del.onclick = function() {
       if(confirm('هل تريد حذف هذا التوثيق؟')) {
-        logs.splice(i,1); saveLogs(); updateTable(); updateStats();
+        logs.splice(i,1); saveLogs(); updateTable(); updateStats(); updateNeededTable(); updatePieChart();
       }
     };
     let delTd = row.insertCell();
     delTd.appendChild(del);
   });
 }
-// تحديث الإحصائيات
 function updateStats() {
   const statBox = document.getElementById('stats');
   if(logs.length == 0) { statBox.innerHTML = ''; return;}
-  // عدّ التوثيقات حسب العنصر
   let stat = {};
   logs.forEach(x => stat[x.eval] = (stat[x.eval]||0)+1);
   statBox.innerHTML = '';
@@ -280,8 +612,91 @@ function updateStats() {
     statBox.appendChild(s);
   });
 }
-
-// إعادة تحجيم الصورة
+document.getElementById('exportWord').onclick = function() {
+  if(logs.length == 0) return alert('لا توجد توثيقات لتصديرها');
+  let html = `<html dir="rtl"><head><meta charset="utf-8"></head><body style="font-family:'Tajawal',Arial;">
+  <h2 style="color:#00897b;">تقرير توثيق أعمال وكيلة المدرسة</h2>
+  <table border="1" style="border-collapse:collapse;width:100%;font-size:1em;">
+    <tr><th>عنصر التقييم</th><th>وصف الممارسة</th><th>تاريخ الإضافة</th></tr>`;
+  logs.forEach(x => {
+    html += `<tr>
+      <td>${x.eval}</td>
+      <td>${x.desc}</td>
+      <td>${x.date}</td>
+    </tr>`;
+  });
+  html += `</table>`;
+  html += `<h3>المرفقات المصورة:</h3>`;
+  logs.forEach((x,i) => {
+    if(x.imgs && x.imgs.length>0)
+      html += `<div><b>${i+1}- ${x.eval}:</b><br>${x.imgs.map(img=>`<img src="${img}" style="max-width:120px;margin:4px 4px;">`).join('')}</div>`;
+  });
+  html += '</body></html>';
+  let blob = new Blob([html], {type:'application/msword'});
+  let a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'تقرير_توثيق_الأعمال.doc';
+  a.click();
+};
+document.getElementById('exportPDF').onclick = function() {
+  let win = window.open('', '', 'width=900,height=900');
+  win.document.write('<html dir="rtl"><head><meta charset="utf-8"><title>تقرير PDF</title></head><body style="font-family:Tajawal,Arial">');
+  win.document.write('<h2 style="color:#00897b;">تقرير توثيق أعمال وكيلة المدرسة</h2>');
+  win.document.write('<table border="1" style="border-collapse:collapse;width:100%;font-size:1em;">');
+  win.document.write('<tr><th>عنصر التقييم</th><th>وصف الممارسة</th><th>تاريخ الإضافة</th></tr>');
+  logs.forEach(x => {
+    win.document.write(`<tr>
+      <td>${x.eval}</td>
+      <td>${x.desc}</td>
+      <td>${x.date}</td>
+    </tr>`);
+  });
+  win.document.write('</table>');
+  win.document.write('<h3>المرفقات المصورة:</h3>');
+  logs.forEach((x,i) => {
+    if(x.imgs&&x.imgs.length>0)
+      win.document.write(`<div><b>${i+1}- ${x.eval}:</b><br>${x.imgs.map(img=>`<img src="${img}" style="max-width:120px;margin:4px 4px;">`).join('')}</div>`);
+  });
+  win.document.write('</body></html>');
+  win.document.close();
+  setTimeout(()=>win.print(), 300);
+};
+document.getElementById('exportBackup').onclick = function() {
+  let blob = new Blob([JSON.stringify(logs)], {type:'application/json'});
+  let a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'backup-توثيق-الأعمال.json';
+  a.click();
+};
+document.getElementById('importBackup').onclick = function() {
+  let inp = document.createElement('input');
+  inp.type = 'file';
+  inp.accept = '.json,application/json';
+  inp.onchange = function(e) {
+    let file = e.target.files[0];
+    let reader = new FileReader();
+    reader.onload = function(evt) {
+      try {
+        let imported = JSON.parse(evt.target.result);
+        if(Array.isArray(imported)) {
+          if(confirm('هل ترغب في استبدال جميع البيانات الحالية بالنسخة الاحتياطية؟')) {
+            logs = imported;
+            saveLogs();
+            updateTable();
+            updateStats();
+            updateNeededTable();
+            updatePieChart();
+          }
+        }
+      } catch(err) {
+        alert('الملف غير صالح!');
+      }
+    }
+    reader.readAsText(file);
+  }
+  inp.click();
+};
+document.getElementById('resetAll').onclick = resetAllData;
 function resizeAndConvert(file) {
   return new Promise(resolve => {
     let reader = new FileReader();
@@ -301,37 +716,57 @@ function resizeAndConvert(file) {
     reader.readAsDataURL(file);
   });
 }
-
-// تصدير تقرير وورد (كود مبسط)
-document.getElementById('exportWord').onclick = function() {
-  if(logs.length == 0) return alert('لا توجد توثيقات لتصديرها');
-  let html = `<html dir="rtl"><head><meta charset="utf-8"></head><body style="font-family:'Tajawal',Arial;">
-  <h2 style="color:#00897b;">تقرير توثيق أعمال وكيلة المدرسة</h2>
-  <table border="1" style="border-collapse:collapse;width:100%;font-size:1em;">
-    <tr><th>عنصر التقييم</th><th>وصف الممارسة</th><th>تاريخ الإضافة</th></tr>`;
-  logs.forEach(x => {
-    html += `<tr>
-      <td>${x.eval}</td>
-      <td>${x.desc}</td>
-      <td>${x.date}</td>
-    </tr>`;
-  });
-  html += `</table>`;
-  // الصور في آخر التقرير
-  html += `<h3>المرفقات المصورة:</h3>`;
-  logs.forEach((x,i) => {
-    if(x.img)
-      html += `<div><b>${i+1}- ${x.eval}:</b><br><img src="${x.img}" style="max-width:340px;margin:12px 0;"></div>`;
-  });
-  html += '</body></html>';
-  let blob = new Blob([html], {type:'application/msword'});
-  let a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'تقرير_توثيق_الأعمال.doc';
-  a.click();
-};
-// تصفير كل البيانات
-document.getElementById('resetAll').onclick = resetAllData;
+function updateNeededTable() {
+  let used = {};
+  logs.forEach(x => used[x.eval] = (used[x.eval]||0)+1);
+  let el = document.getElementById('neededTable');
+  let html = `<div class="needed-block">
+    <h3>حالة توثيق عناصر التقييم</h3>
+    <table class="needed-table">
+      <tr>
+        <th>العنصر</th>
+        <th>الحالة</th>
+      </tr>
+      ${
+        allItems.map(item =>
+          `<tr>
+            <td>${item}</td>
+            <td>${used[item]? (used[item]+' ممارسة') : 'بحاجة لممارسة'}</td>
+          </tr>`
+        ).join('')
+      }
+    </table>
+  </div>`;
+  el.innerHTML = html;
+}
+function updatePieChart() {
+  let canvas = document.getElementById('pieProgress');
+  let ctx = canvas.getContext('2d');
+  let used = [...new Set(logs.map(x => x.eval))];
+  let percent = Math.round(used.length / allItems.length * 100);
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.beginPath();
+  ctx.arc(60,60,50,0,2*Math.PI,false);
+  ctx.fillStyle="#e0e0e0";
+  ctx.fill();
+  ctx.beginPath();
+  ctx.moveTo(60,60);
+  ctx.arc(60,60,50, -Math.PI/2, -Math.PI/2 + 2*Math.PI*percent/100, false);
+  ctx.closePath();
+  ctx.fillStyle=percent===100 ? "#44c2a6" : "#009688";
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(60,60,37,0,2*Math.PI,false);
+  ctx.fillStyle="#fff";
+  ctx.fill();
+  ctx.font = "bold 1.6em Tajawal,Arial";
+  ctx.fillStyle="#009688";
+  ctx.textAlign="center";
+  ctx.textBaseline="middle";
+  ctx.fillText(percent+"%",60,62);
+  let label = document.getElementById('pieLabel');
+  label.textContent = used.length + " / " + allItems.length + " عنصر موثق";
+}
 </script>
 </body>
 </html>
